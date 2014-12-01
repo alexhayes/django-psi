@@ -3,3 +3,8 @@
 TODO.md
 *.egg-info/
 dist
+.project
+.pydevproject
+*.egg
+.tox
+.venv

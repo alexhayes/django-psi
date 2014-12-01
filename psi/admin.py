@@ -9,12 +9,13 @@ class RuleResultsAdmin(admin.ModelAdmin):
 
 class ScreenshotAdmin(admin.ModelAdmin):
     raw_id_fields = ('page_insight',)
+    list_display = ('page_insight', 'width', 'height', 'image')
 
 
 class PageInsightAdmin(admin.ModelAdmin):
-    list_display = ('title', 'url', 'strategy', 'score', 'responseCode',
-                    'numberResources', 'imageResponseBytes', 'htmlResponseBytes',
-                    'javascriptResponseBytes')
+    list_display = ('url', 'strategy', 'locale', 'status', 'title', 'score', 'response_code',
+                    'number_resources', 'image_response_bytes', 'html_response_bytes',
+                    'javascript_response_bytes')
 
 admin.site.register(PageInsight, PageInsightAdmin)
 admin.site.register(RuleResult, RuleResultsAdmin)

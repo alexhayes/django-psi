@@ -1,0 +1,239 @@
+{
+ "kind": "pagespeedonline#result",
+ "id": "http://example.com/",
+ "responseCode": 200,
+ "title": "Example Domain",
+ "score": 99,
+ "pageStats": {
+  "numberResources": 1,
+  "numberHosts": 1,
+  "numberStaticResources": 15,
+  "cssResponseBytes": 160783,
+  "totalRequestBytes": "33",
+  "imageResponseBytes": "38054",
+  "javascriptResponseBytes": "627690",
+  "numberJsResources": 4,
+  "numberCssResources": 1,
+  "htmlResponseBytes": "1571",
+  "otherResponseBytes": "1573"
+ },
+ "formattedResults": {
+  "locale": "en_US",
+  "ruleResults": {
+   "AvoidLandingPageRedirects": {
+    "localizedRuleName": "Avoid landing page redirects",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Your page has no redirects. Learn more about avoiding landing page redirects.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/AvoidRedirects"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "EnableGzipCompression": {
+    "localizedRuleName": "Enable compression",
+    "ruleImpact": 0.0664,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Compressing resources with gzip or deflate can reduce the number of bytes sent over the network."
+      }
+     },
+     {
+      "header": {
+       "format": "Enable compression for the following resources to reduce their transfer size by $2 ($3 reduction).",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/EnableCompression"
+        },
+        {
+         "type": "BYTES",
+         "value": "664B"
+        },
+        {
+         "type": "PERCENTAGE",
+         "value": "52%"
+        }
+       ]
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "Compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "http://example.com/"
+          },
+          {
+           "type": "BYTES",
+           "value": "664B"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "52%"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "LeverageBrowserCaching": {
+    "localizedRuleName": "Leverage browser caching",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "You have enabled browser caching. Learn more about browser caching recommendations.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/LeverageBrowserCaching"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "MainResourceServerResponseTime": {
+    "localizedRuleName": "Reduce server response time",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Your server responded quickly. Learn more about server response time optimization.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/Server"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "MinifyCss": {
+    "localizedRuleName": "Minify CSS",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Your CSS is minified. Learn more about minifying CSS.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/MinifyResources"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "MinifyHTML": {
+    "localizedRuleName": "Minify HTML",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Your HTML is minified. Learn more about minifying HTML.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/MinifyResources"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "MinifyJavaScript": {
+    "localizedRuleName": "Minify JavaScript",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Your JavaScript content is minified. Learn more about minifying JavaScript.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/MinifyResources"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "MinimizeRenderBlockingResources": {
+    "localizedRuleName": "Eliminate render-blocking JavaScript and CSS in above-the-fold content",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "You have no render-blocking resources. Learn more about removing render-blocking resources.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/BlockingJS"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "OptimizeImages": {
+    "localizedRuleName": "Optimize images",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Your images are optimized. Learn more about optimizing images.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/OptimizeImages"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "PrioritizeVisibleContent": {
+    "localizedRuleName": "Prioritize visible content",
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "You have the above-the-fold content properly prioritized. Learn more about prioritizing visible content.",
+       "args": [
+        {
+         "type": "HYPERLINK",
+         "value": "https://developers.google.com/speed/docs/insights/PrioritizeVisibleContent"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ },
+ "version": {
+  "major": 1,
+  "minor": 15
+ },
+ "screenshot": {
+  "data": "_9j_4AAQSkZJRgABAQAAAQABAAD_2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj_2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj_wAARCADwAUADASIAAhEBAxEB_8QAHAABAAMAAwEBAAAAAAAAAAAAAAMEBQECBwYI_8QANhAAAgEDAgMGBAUDBQEAAAAAAAECAwURBCESE5EUMUFRUmEGIjNxBxUycqEjYoFCQ6LR8LH_xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL_xAAZEQEBAQEBAQAAAAAAAAAAAAAAEQFRAkH_2gAMAwEAAhEDEQA_AP0qACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALGlpRmnKSzvjBY5NP0R6AZ4NHk0_RHoOTT9EegozgaPJp-iPQcmn6I9BRnA0eTT9Eeg5NP0R6CjOBo8mn6I9Byafoj0FGcDR5NP0R6Dk0_RHoKM4Gjyafoj0HJp-iPQUZwNHk0_RHoOTT9EegozgaPJp-iPQcmn6I9BRnA0eTT9Eeg5NP0R6CjOBo8mn6I9Byafoj0FGcDR5NP0R6Dk0_RHoKM4Gjyafoj0HJp-iPQUZwNDk0_RHoQ6qlGMOKKxhgVQAAAAAAAAAAAAAAAXNF9J_uLBBovpP8AcTkADK8wAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAEOr-i_uiYh1f0X90BRABQAAAAAAAAAAAAAXdF9J_uJyDRfSf7icg8a_E-8X6H4jUbXatbdaejjaYal0dBrtHpXxutUjxSlqItS2iliPkbdb8Qats-M6nw7q46Hs-l0DuNW4V9X_tRo8ThJRjjnZXG0tuX8yXgfZ3n4YsN8rwrXqyWu41qceCE9XpKdaUY5zhOSeFlsnVktUYKMbZolFVeckqEdqnBwcfd-rg-XPp27gPKrV-LF3ueop2_TWm3u4VbhptJTnOtVp0nCvpq1aM8Shx7cnG6XEmmsEWj_GG6V7TQ1dazW-hU1em0Or06etk4RhX1XZpcyXAuHD-bKTWO_uPVND8NWLQShLQ2W2aaUJqpB0dLCHDJKSUlhbNKc0n_AHPzZTvHwXYrpodPpKlv09CjQnQlFaelCHy0aqqxpvb6fEt4927A841_4n3DS6yOt1VCPKtelvEdbpdJV46Wqq6V6bglCbjlL-q_2viznB9HpvjC7XH4B-K9dX0FS26-3aWtKhXUJqFVqg5xnBVIqSw9mmvDKymfbULJatPSoU9PbNDSp0Kc6VGMNPCKpwnjjjFJbKWFlLvxucaGx2q36GtotBbNDptHWzzaFHTwhTnlYfFFLDyttwPGqXxrcPhClbdXP4g1HxPR1tnlrdVpdTOhxaSqnRjCfHTguCm5VXF8SeEsruZs3D8Tb1ptdK1U7Zaq1zoVtTRr1Y6ub08lS0kdSnCShnOJcLi1s_HDPR7Z8M2K00dRStVltmipaiPDWhptJTpxqrykopcXe-876f4es2mo0aOntFupUqPHy4U9NCMYcaxPhSW3Etn5-IHmml_FbX6jQVObbrfptfXp6Cvo6XPq1lUhqqdSpGGIU-J1IqlLOMRxvlYK2l_FXW6zR0LrpLdF1dTbLbWjpamq_pKpqNdPTPdRztjPFvlYWNt_Uq_w3Y69Hk17NbalHhpw4J6WEo8NNNU1hrujl8Pll4O1P4fs9KEYU7Tb4QioRUY6aCSUJupFd3cptyXlJ5W4GZ8B_EOp-IdBcHr9NR0-t0Gvr2-tGhUc6cpU5JcUW0nhprZo-mIdLpNNpOb2XT0aPNqSq1OXBR45y75PHe34smAAAAAAAAAAAAAAAAAEOr-i_uiYh1f0X90BRABQAAAAAAAAAAAAAXdF9J_uJyDRfSf7icgxbxXuun1XHoKUa9FQTdJw73vn5l44Sxt4lWveLtG36ipTtU-0wqRhCLUmpRcc52Xnt5J97wmy1dNJd6-sUtDradHTpxlwtbtprKe3djPit_YpVbNeqlDS5u0lqaUKinOLajOTfytxxhpAc_nN5ac1Zny0ntxSUm_ZcPdv_wAX7Etvu121NLmVrTKgnDKjJvi4uJLHd3YbfnsddVbL1U0bpUrnGNTtPMjU3yqezSeFvjD-XZNNZZG7TfnSlJXhqs48Kj3xW3nw5b9_4AkqXm7R0mnnCzTlVnSqSqRbaUJReEu7Lz3rbfKKbv1-59KmrLNp5cp8E0vHEe7Z_p3bx392xe01svMdLUVe6KeonCK4lH5YyTTbSx4_N1XkdqluvSnQVG6JQhS4JccMuUuPOXtv8uF_IFWN5vvFHNnclGmpzW6cm0tk8YTTzt5eOTtC8Xmcak_ylw4IUpcuUZNycn8yTxju6eJBUtHxJ2bUSV5zqPm5UY4jHG2E249_6t_DbvwTRtN_hKco3eOHwyUGvFSTabxusLG2M-wHbUXq70uGVKzzrKWmjU4UpJqfFJNZa7sKLx-rfu78T668XGjqnSoWitWjH9UlnfMcrDxh77PfYrXCz3zVVq-LvwUJSbpwppwcFxbLiSz3fzk41Fq-IJUq1KndY8E_lUm3GSj5pqOzwse-c-wHaN2vdaNRwtfKcIUpqE4ybk3L50nsv093ivHyO9e63l23nULW1Xc-GNNqTzFJfM08NZbePLx8jn8uvdTVamo7kqVN1ZSo0_1JLbhz8q7lnbfz9iWlb7vHSQjK4p1-Y5OT3UY8GEv074e77uL27gKv53eKmqpxo2iUaMpLMqkZp43Tzts8rP28snGhvl7rc2VWxzik8Qhlxfju3Jd23-MokjbL61890WFDaMfF42TfD_y8dnhYw66svxDC3wpUr0lX4VFyeWljxTxlvvy_HbuAuyvF0UNK1ZasnUo8ya4scEs44e7y338_ZlKp8QXuNDU1_wAjap0OJ4lKalNJZylw_wDsPBYoWq9wdGMrr_Tgo5WcuTWdm2t_d97z4Y3sPQXhy1z_ADFLmRmtPHG0Myym9vBYXjjd75Ap_nl6jxt2SpKKipJri3WUmksZzjLw8e-MMv1LjcYVdYlbnKlSjLlSy8zakvBLuw87ZezKNC0_EEeKVa7U5ycUsuL7_lba2SW6eFjx3ZxG13upV1FCtcJ9nUIcqq5rLkqilukk-5NPL-bOMAd9He7rKhCWqtFSElFOfDGe7wspLHfu3_H6tjhXq9qEakrHJxm1iMaj4orP-rK8iR2--LTaeKuKdbtClUm3tGmoNY_T83zYb7s-aI6dnvkqUefep8xZ-mkk_L_T9_8AyAmtt0u1S4xo662qlQk2uZTU3w4imstrGG8r_Hd4nNe6XTS1mqltlXp8UlxUoyzwp44sYe7W-OmdyFWu_KrB_msHTUk2nHO3Ck9seabSz4vOfC7Z9Fc9PXdS4a7tEXHh5fhHuw-5Zf6uq8gK2su93oupOlaOZSUIuKUpOfE4ptYS8G2vPY0bJr61w0jq6jSz0s1LgcJPO6Sz4d2cr_BogAQ6v6L-6JiHV_Rf3QFEAFAAAAAAAAAAAAABd0X0n-4nINF9J_uJyDJuN2qaPUyprSTqQXC-OOe554vDw-Xr7HFG9c2aj2SvHNOdRSaynw_9_wDXma4NXOIwvz6aqyU9DWUNlHfeTab_APmP58jiv8QSoU3Keg1Gc4isp8XT7r-fI3gW-eE1jUb3zKlOC0lbMuFyaaxFPx-2_wDnfyNiMlJZi0_scgzu58UABAAAAAAAAAAAAAAAAAAAAAACHV_Rf3RMQ6v6L-6AogAoAAAAAAAAAAAAALmi-k_3Fgo6esqeVJbPfYn7VT_u6EE4IO1U_foO1U_foBOCDtVP36DtVP36ATgg7VT9-g7VT9-gE4IO1U_foO1U_foBOCDtVP36DtVP36ATgg7VT9-g7VT9-gE4IO1U_foO1U_foBOCDtVP36DtVP36ATgg7VT9-g7VT9-gE4IO1U_foO1U_foBOCDtVP36DtVP36ATgg7VT9-g7VT9-gE5Dq_ov7o47VT_ALuhDqK6qR4Yp48WwIAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf_Z",
+  "height": 240,
+  "mime_type": "image/jpeg",
+  "width": 320
+ }
+}
