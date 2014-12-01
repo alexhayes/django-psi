@@ -28,84 +28,67 @@ class Command(BaseCommand):
                     help="Indicates if binary data containing a screenshot should be included."),
         )
 
-    def _processScreenshot(self, data, pageInsight):
+    def _processScreenshot(self, data, page_insight):
         screenshot = Screenshot()
         screenshot.width = data.get('width', 0)
         screenshot.height = data.get('height', 0)
         screenshot.mime_type = data.get('mime_type', None)
         screenshot.data = data.get('data', None)
-        screenshot.pageInsight = pageInsight
+        screenshot.page_insight = page_insight
         screenshot.save()
 
-    def _processRules(self, data, pageInsight):
+    def _processRules(self, data, page_insight):
         for key in data:
             ruleResult = RuleResult()
             ruleResult.title = data[key]['localizedRuleName']
             ruleResult.impact = data[key]['ruleImpact']
             ruleResult.description = data[key]['urlBlocks'][0]['header']['format']
-            ruleResult.pageInsight = pageInsight
+            ruleResult.page_insight = page_insight
             ruleResult.save()
 
     def _processPageInsight(self, data):
-        pageInsight = PageInsight()
-        pageInsight.json = data
-        pageInsight.responseCode = data["responseCode"]
-        pageInsight.title = data["title"]
-        pageInsight.score = data["score"]
-        pageInsight.url = data['id']
-        pageInsight.numberResources = data['pageStats']["numberResources"]
-        pageInsight.numberHosts = data['pageStats']["numberHosts"]
-        pageInsight.totalRequestBytes = int(data['pageStats']["totalRequestBytes"])
-        pageInsight.numberStaticResources = data['pageStats']["numberStaticResources"]
-        pageInsight.htmlResponseBytes = int(data['pageStats']["htmlResponseBytes"])
-        pageInsight.cssResponseBytes = int(data['pageStats'].get("cssResponseBytes", 0))
-        pageInsight.imageResponseBytes = int(data['pageStats'].get("imageResponseBytes", 0))
-        pageInsight.javascriptResponseBytes = int(data['pageStats'].get("javascriptResponseBytes", 0))
-        pageInsight.otherResponseBytes = int(data['pageStats'].get("otherResponseBytes", 0))
-        pageInsight.numberJsResources = int(data['pageStats'].get("numberJsResources", 0))
-        pageInsight.numberCssResources = int(data['pageStats'].get("numberCssResources", 0))
-        pageInsight.screenshot = data.get('screenshot', None)
-        pageInsight.strategy = self.strategy
-        pageInsight.save()
-        return pageInsight
-
-    def _processPageStats(self, data, pageInsight):
-        pageStat = PageStats()
-        pageStat.numberResources = data["numberResources"]
-        pageStat.numberHosts = data["numberHosts"]
-        pageStat.totalRequestBytes = int(data["totalRequestBytes"])
-        pageStat.numberStaticResources = data["numberStaticResources"]
-        pageStat.htmlResponseBytes = int(data["htmlResponseBytes"])
-        pageStat.cssResponseBytes = int(data["cssResponseBytes"])
-        pageStat.imageResponseBytes = int(data["imageResponseBytes"])
-        pageStat.javascriptResponseBytes = int(data["javascriptResponseBytes"])
-        pageStat.otherResponseBytes = int(data["otherResponseBytes"])
-        pageStat.numberJsResources = int(data["numberJsResources"])
-        pageStat.numberCssResources = int(data["numberCssResources"])
-        pageStat.pageInsight = pageInsight
-        pageStat.save()
-        return pageStat
+        page_insight = PageInsight()
+        page_insight.json = data
+        page_insight.response_code = data["responseCode"]
+        page_insight.title = data["title"]
+        page_insight.score = data["score"]
+        page_insight.url = data['id']
+        page_insight.number_resources = data['pageStats']["numberResources"]
+        page_insight.number_hosts = data['pageStats']["numberHosts"]
+        page_insight.total_request_bytes = int(data['pageStats']["totalRequestBytes"])
+        page_insight.number_static_resources = data['pageStats']["numberStaticResources"]
+        page_insight.html_response_bytes = int(data['pageStats']["htmlResponseBytes"])
+        page_insight.css_response_bytes = int(data['pageStats'].get("cssResponseBytes", 0))
+        page_insight.image_response_bytes = int(data['pageStats'].get("imageResponseBytes", 0))
+        page_insight.javascript_response_bytes = int(data['pageStats'].get("javascriptResponseBytes", 0))
+        page_insight.other_response_bytes = int(data['pageStats'].get("otherResponseBytes", 0))
+        page_insight.number_js_resources = int(data['pageStats'].get("numberJsResources", 0))
+        page_insight.number_css_resources = int(data['pageStats'].get("numberCssResources", 0))
+        page_insight.screenshot = data.get('screenshot', None)
+        page_insight.strategy = self.strategy
+        page_insight.save()
+        return page_insight
 
     def _process_results(self, data):
-        pageInsight = self._processPageInsight(data)
-        self._processRules(data['formattedResults']['ruleResults'], pageInsight)
+        page_insight = self._processPageInsight(data)
+        self._processRules(data['formattedResults']['ruleResults'], page_insight)
         if self.screenshot:
-            self._processScreenshot(data['screenshot'], pageInsight)
+            self._processScreenshot(data['screenshot'], page_insight)
         if self.console:
-            self._console_report(pageInsight)
+            self._console_report(page_insight)
 
-    def _console_report(self, pageInsight):
+    def _console_report(self, page_insight):
         print "\n" + _("PageSpeed Insights")
         print "--------------------------------------------\n"
-        print "URL: \t\t\t%s" % pageInsight.url
-        print "Strategy: \t\t%s" % pageInsight.strategy
-        print "Score: \t\t\t%s\n" % pageInsight.score
+        print "URL: \t\t\t%s" % page_insight.url
+        print "Strategy: \t\t%s" % page_insight.strategy
+        print "Score: \t\t\t%s\n" % page_insight.score
         print "--------------------------------------------"
-        for field in pageInsight._meta.get_all_field_names():
+        for field in page_insight._meta.get_all_field_names():
             if field not in ('json', 'ruleresult', 'screenshot', 'score', 'url', 'strategy', 'id', 'title', 'created_date'):
-                print "%s\t\t\t%s" % (field, pageInsight._meta.get_field(field).value_from_object(pageInsight))
+                print "%s\t\t\t%s" % (field, page_insight._meta.get_field(field).value_from_object(page_insight))
         print "--------------------------------------------\n"
-        for result in pageInsight.ruleresult_set.all():
+        for result in page_insight.ruleresult_set.all():
             print "%s\t\t\t%s" % (result.title, result.impact)
         print "\n"
 
@@ -144,5 +127,3 @@ class Command(BaseCommand):
                 self._process_results(results)
         except HttpError, e:
             raise e
-        except Exception, e:
-            raise CommandError(e.message)

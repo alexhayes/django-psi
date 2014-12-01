@@ -3,12 +3,12 @@ from psi.models import PageInsight, RuleResult, Screenshot
 
 
 class RuleResultsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'impact', 'pageInsight')
-    raw_id_fields = ('pageInsight',)
+    list_display = ('title', 'impact', 'page_insight')
+    raw_id_fields = ('page_insight',)
 
 
 class ScreenshotAdmin(admin.ModelAdmin):
-    raw_id_fields = ('pageInsight',)
+    raw_id_fields = ('page_insight',)
 
 
 class PageInsightAdmin(admin.ModelAdmin):
