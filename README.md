@@ -92,36 +92,7 @@ Getting started is easy. Execute the below to create entries in the database, an
 
 The above informs `psi` to run PageSpeed Insights on the provided URL, and also prints results to the console.
 
-### Options
-
-### url
-
-Type: String
-
-The URL of the page for which the PageSpeed Insights API should generate results.
-
-If no url is provided, command will attempt to retrieve `PSI_URLS` from the project's settings conf.
-
-### strategy
-
-Type: String
-Default: 'desktop'
-
-The strategy to use when analyzing the page. Valid values are "desktop" and "mobile".
-
-### locale
-
-Type: String
-Default: 'en_US'
-
-The locale that results should be generated in. See the list of supported locales. If the specified locale is not supported, the default locale is used.
-
-### quiet
-
-Type: Boolean
-Default: False
-
-Be quiet, don't output anything.
+To see all options call with `-h`.
 
 
 ## Usage
