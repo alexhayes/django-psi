@@ -10,7 +10,7 @@ from django.conf import settings
 from django.core.files.base import ContentFile
 from django.core.validators import URLValidator
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from jsonfield.fields import JSONField
 from psi.settings import PsiAppConf
 
@@ -102,7 +102,6 @@ class PageInsight(models.Model):
             data = service.pagespeedapi().runpagespeed(url=self.url,
                                                        strategy=self.strategy,
                                                        locale=self.locale,
-                                                       rule=settings.PSI_RULES,
                                                        screenshot=settings.PSI_SCREENSHOT).execute()
             # Save json before we continue
             self.json = data

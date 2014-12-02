@@ -75,6 +75,7 @@ def main():
             DEBUG=True,
             TEMPLATE_DEBUG=True,
             ENCRYPTED_FIELD_KEYS_DIR=KEY_LOCS,
+            MIDDLEWARE_CLASSES=()
         )
 
         if django.VERSION[:2] >= (1, 7):
