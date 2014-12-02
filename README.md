@@ -35,7 +35,7 @@ You're all set!
 
 These project settings.py values are not required, but are available to reduce having to provide them when executing the management command. You can always override these settings.py values when executing the management command by supplying their matching arguments.
 
-### GOOGLE_API_KEY
+### `GOOGLE_API_KEY`
 
 TYPE: String
 
@@ -47,7 +47,7 @@ Example:
 GOOGLE_API_KEY = "SOME%GOOG*&API*KEY"
 ````
 
-### PSI_URLS
+### `PSI_URLS`
 
 TYPE: tuple
 
@@ -63,19 +63,19 @@ PSI_URLS = (
 )
 ```
 
-### PSI_SCREENSHOT
+### `PSI_SCREENSHOT`
 
 TYPE: Boolean
 
 If True (default) screenshots will be saved to the file system.
 
-### PSI_MEDIA_PATH
+### `PSI_MEDIA_PATH`
 
 TYPE: String
 
 A path that will be appended to your MEDIA_ROOT that defines where downloaded screenshots will be saved.
 
-### PSI_CELERY_QUEUE
+### `PSI_CELERY_QUEUE`
 
 Type: String
 
@@ -112,7 +112,7 @@ page_insight.populate()
 
 ## Celery
 
-For those that want to populate in the background using celery you can do the following;
+For those that want to populate in the background using [celery](http://www.celeryproject.org/) you can do the following;
 
 ```python
 from psi.models import PageInsight
@@ -125,6 +125,14 @@ page_insight = PageInsight.objects.create(url='http://example.com')
 populate_page_insight.delay(page_insight.pk)
 ```
 
+## Running Tests
+
+Tests are run using [tox](https://pypi.python.org/pypi/tox), as follows;
+
+```bash
+cd django-psi
+tox
+```
 
 ## Roadmap/Ideas
 
