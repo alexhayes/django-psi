@@ -1,110 +1,73 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import psi.models
+import jsonfield.fields
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'PageInsight'
-        db.create_table(u'psi_pageinsight', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('responseCode', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('strategy', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('score', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
-            ('numberResources', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('numberHosts', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('totalRequestBytes', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('numberStaticResources', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('htmlResponseBytes', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('cssResponseBytes', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('imageResponseBytes', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('javascriptResponseBytes', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('otherResponseBytes', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('numberJsResources', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('numberCssResources', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('created_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
-            ('json', self.gf('django.db.models.fields.TextField')()),
-        ))
-        db.send_create_signal(u'psi', ['PageInsight'])
+    dependencies = [
+    ]
 
-        # Adding model 'RuleResult'
-        db.create_table(u'psi_ruleresult', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('impact', self.gf('django.db.models.fields.FloatField')()),
-            ('description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('pageInsight', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['psi.PageInsight'])),
-        ))
-        db.send_create_signal(u'psi', ['RuleResult'])
-
-        # Adding model 'Screenshot'
-        db.create_table(u'psi_screenshot', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('width', self.gf('django.db.models.fields.IntegerField')()),
-            ('height', self.gf('django.db.models.fields.IntegerField')()),
-            ('data', self.gf('django.db.models.fields.TextField')()),
-            ('mime_type', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('pageInsight', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['psi.PageInsight'])),
-        ))
-        db.send_create_signal(u'psi', ['Screenshot'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'PageInsight'
-        db.delete_table(u'psi_pageinsight')
-
-        # Deleting model 'RuleResult'
-        db.delete_table(u'psi_ruleresult')
-
-        # Deleting model 'Screenshot'
-        db.delete_table(u'psi_screenshot')
-
-
-    models = {
-        u'psi.pageinsight': {
-            'Meta': {'object_name': 'PageInsight'},
-            'created_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'cssResponseBytes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'htmlResponseBytes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'imageResponseBytes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'javascriptResponseBytes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'json': ('django.db.models.fields.TextField', [], {}),
-            'numberCssResources': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'numberHosts': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'numberJsResources': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'numberResources': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'numberStaticResources': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'otherResponseBytes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'responseCode': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'score': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'strategy': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'totalRequestBytes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})
-        },
-        u'psi.ruleresult': {
-            'Meta': {'object_name': 'RuleResult'},
-            'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'impact': ('django.db.models.fields.FloatField', [], {}),
-            'pageInsight': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['psi.PageInsight']"}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'psi.screenshot': {
-            'Meta': {'object_name': 'Screenshot'},
-            'data': ('django.db.models.fields.TextField', [], {}),
-            'height': ('django.db.models.fields.IntegerField', [], {}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'mime_type': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'pageInsight': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['psi.PageInsight']"}),
-            'width': ('django.db.models.fields.IntegerField', [], {})
-        }
-    }
-
-    complete_apps = ['psi']
+    operations = [
+        migrations.CreateModel(
+            name='PageInsight',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('url', models.URLField(max_length=191, verbose_name='URL', db_index=True)),
+                ('strategy', models.CharField(db_index=True, max_length=50, verbose_name='Strategy', choices=[(b'desktop', b'Desktop'), (b'mobile', b'Mobile')])),
+                ('locale', models.CharField(default=b'en_US', max_length=16, verbose_name='Locale')),
+                ('status', models.CharField(db_index=True, max_length=32, verbose_name='Status', choices=[(b'pending', b'Pending'), (b'consuming', b'Consuming'), (b'consumed', b'Consumed'), (b'populated', b'Populated'), (b'error', b'Error')])),
+                ('created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
+                ('updated', models.DateTimeField(auto_now=True, verbose_name='Date Updated', auto_now_add=True)),
+                ('response_code', models.IntegerField(default=0, verbose_name='Response Code')),
+                ('title', models.CharField(max_length=255, verbose_name='Page Title')),
+                ('score', models.IntegerField(default=0, verbose_name='Score')),
+                ('number_resources', models.IntegerField(default=0, verbose_name='Number of Resources')),
+                ('number_hosts', models.IntegerField(default=0, verbose_name='Number of Hosts')),
+                ('total_request_bytes', models.IntegerField(default=0, verbose_name='Total Request Bytes')),
+                ('number_static_resources', models.IntegerField(default=0, verbose_name='Number of Static Resources')),
+                ('html_response_bytes', models.IntegerField(default=0, verbose_name='HTML Response Bytes')),
+                ('css_response_bytes', models.IntegerField(default=0, verbose_name='CSS Response Bytes')),
+                ('image_response_bytes', models.IntegerField(default=0, verbose_name='Image Response Bytes')),
+                ('javascript_response_bytes', models.IntegerField(default=0, verbose_name='Javascript Response Bytes')),
+                ('other_response_bytes', models.IntegerField(default=0, verbose_name='Other Response Bytes')),
+                ('number_js_resources', models.IntegerField(default=0, verbose_name='Number of JS Resources')),
+                ('number_css_resources', models.IntegerField(default=0, verbose_name='Number of CSS Resources')),
+                ('json', jsonfield.fields.JSONField(verbose_name='JSON Response')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='RuleResult',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=255, verbose_name='Page Title')),
+                ('impact', models.FloatField(verbose_name='Impact')),
+                ('description', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('page_insight', models.ForeignKey(related_name='rule_results', to='psi.PageInsight')),
+            ],
+            options={
+                'verbose_name_plural': 'Rule Results',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Screenshot',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('width', models.IntegerField(verbose_name='Width')),
+                ('height', models.IntegerField(verbose_name='Height')),
+                ('mime_type', models.CharField(max_length=32, verbose_name='Mime Type')),
+                ('image', models.ImageField(upload_to=psi.models.screenshot_upload_to, max_length=255, verbose_name='Image')),
+                ('page_insight', models.OneToOneField(related_name='screenshot', to='psi.PageInsight')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+    ]
