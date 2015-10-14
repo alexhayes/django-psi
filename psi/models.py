@@ -1,4 +1,8 @@
-import StringIO
+try:
+    from io import BytesIO
+except ImportError:
+    BytesIO = None
+    import StringIO
 from base64 import b64decode
 import collections
 import json
@@ -148,7 +152,10 @@ class PageInsight(models.Model):
             screenshot.mime_type = data.get('screenshot').get('mime_type')
 
             # Write file to memory
-            f = StringIO.StringIO(b64decode(data.get('screenshot').get('data').replace('_', '/').replace('-', '+')))
+            if BytesIO:
+                f = BytesIO(b64decode(data.get('screenshot').get('data').replace('_', '/').replace('-', '+')))
+            else:
+                f = StringIO.StringIO(b64decode(data.get('screenshot').get('data').replace('_', '/').replace('-', '+')))
             # Determine the file extension
             ext = mimetypes.guess_extension(screenshot.mime_type)
             # Save to disk
