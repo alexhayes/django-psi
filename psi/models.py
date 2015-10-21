@@ -50,7 +50,7 @@ class PageInsight(models.Model):
     # Managed fields
     status = models.CharField(_('Status'), max_length=32, choices=STATUS_CHOICES, db_index=True)
     created = models.DateTimeField(_('Date Created'), auto_now_add=True)
-    updated = models.DateTimeField(_('Date Updated'), auto_now_add=True, auto_now=True)
+    updated = models.DateTimeField(_('Date Updated'), auto_now=True)
     # Populated fields
     response_code = models.IntegerField(_('Response Code'), default=0)
     title = models.CharField(_('Page Title'), max_length=255)

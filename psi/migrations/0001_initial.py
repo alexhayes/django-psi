@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('locale', models.CharField(default=b'en_US', max_length=16, verbose_name='Locale')),
                 ('status', models.CharField(db_index=True, max_length=32, verbose_name='Status', choices=[(b'pending', b'Pending'), (b'consuming', b'Consuming'), (b'consumed', b'Consumed'), (b'populated', b'Populated'), (b'error', b'Error')])),
                 ('created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('updated', models.DateTimeField(auto_now=True, verbose_name='Date Updated', auto_now_add=True)),
+                ('updated', models.DateTimeField(auto_now=True, verbose_name='Date Updated')),
                 ('response_code', models.IntegerField(default=0, verbose_name='Response Code')),
                 ('title', models.CharField(max_length=255, verbose_name='Page Title')),
                 ('score', models.IntegerField(default=0, verbose_name='Score')),
